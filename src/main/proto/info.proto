@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package info;
+
+option java_package="com.rtmt.proto";
+option java_multiple_files = true;
+
+message Info {
+	string status = 1;
+	string info_message = 2;
+}
+
+message InfoRequest {
+	Info greeting = 1;
+}
+
+message InfoResponse {
+	string result = 1;
+}
+
+
+service InfoService {
+    //Unary
+	rpc GreetInfo(InfoRequest) returns (InfoResponse) {};
+	
+	//Server Streamimg
+	//rpc  GreetManyTimes(GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
+	
+	//Client Streaming 
+	//rpc LongGreet(stream LongGreatRequest) returns (LongGreetResponse) {};
+	
+	//Bi-Di Streamimg
+	//rpc GreetEveryone (stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {};
+}
